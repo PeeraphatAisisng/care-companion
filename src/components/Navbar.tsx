@@ -25,9 +25,9 @@ export async function Navbar() {
         <nav className="hidden items-center gap-5 text-sm font-semibold md:flex">
           <Link href="/companions">ค้นหาผู้ช่วย</Link>
           <Link href="/how-it-works">วิธีใช้งาน</Link>
-          {profile?.role === "customer" ? <Link href="/requests">คำขอของฉัน</Link> : null}
+          {profile?.role === "customer" || profile?.is_admin ? <Link href="/requests">คำขอของฉัน</Link> : null}
           {profile?.role === "companion" ? <Link href="/companion/jobs">งานของฉัน</Link> : null}
-          {profile?.role === "admin" ? <Link href="/admin">แดชบอร์ดแอดมิน</Link> : null}
+          {profile?.role === "admin" || profile?.is_admin ? <Link href="/admin">แดชบอร์ดแอดมิน</Link> : null}
           {profile ? <Link href={profile.role === "companion" ? "/companion/profile" : "/profile"}>โปรไฟล์</Link> : null}
         </nav>
 

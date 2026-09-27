@@ -39,7 +39,11 @@ export async function requireProfile() {
 export async function requireRole(roles: UserRole | UserRole[]) {
   const allowed = Array.isArray(roles) ? roles : [roles];
   const result = await requireProfile();
-  if (!result.profile.role || !allowed.includes(result.profile.role)) {
+  const role = result.profile.role;
+  const asAdmin = Boolean(result.profile.is_admin || role === "admin");
+  const allowedByRole = Boolean(role && allowed.includes(role));
+  const allowedAsAdmin = allowed.includes("admin") && asAdmin;
+  if (!allowedByRole && !allowedAsAdmin) {
     redirect("/dashboard");
   }
   return result;
