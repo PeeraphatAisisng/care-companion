@@ -1,26 +1,116 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f6f1e8;
+  --foreground: #1d2a2c;
+  --card: #fffdf8;
+  --muted: #5d6b6d;
+  --line: #d9d0c2;
+  --teal: #0f5c56;
+  --teal-soft: #e4f3f0;
+  --coral: #d76a4e;
+  --sand: #efe4d2;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-teal: var(--teal);
+  --color-teal-soft: var(--teal-soft);
+  --color-coral: var(--coral);
+  --color-sand: var(--sand);
+  --font-sans: var(--font-noto);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-noto), "Noto Sans Thai", sans-serif;
+}
+
+.page-wrap {
+  width: min(1120px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(31, 42, 44, 0.04);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--teal);
+  color: white;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.08);
+}
+
+.btn-ghost {
+  background: white;
+  color: var(--teal);
+  border: 1px solid var(--line);
+}
+
+.btn-danger {
+  background: #fde8e2;
+  color: #9b341d;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field label {
+  font-weight: 700;
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  min-height: 3rem;
+  border: 1px solid var(--line);
+  background: white;
+  border-radius: 1rem;
+  padding: 0.75rem 1rem;
+  font: inherit;
+}
+
+.textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.85rem;
+  font-weight: 700;
 }
